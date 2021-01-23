@@ -77,9 +77,19 @@ func (f Frame) Format(s fmt.State, verb rune) {
 	case 'n':
 		io.WriteString(s, funcname(f.name()))
 	case 'v':
-		f.Format(s, 's')
+		if s.Flag('+') {
+			_, _ = io.WriteString(s, " at ")
+			_, _ = io.WriteString(s, f.name())
+			_, _ = io.WriteString(s, " (")
+			_, _ = io.WriteString(s, f.file())
+		} else {
+			f.Format(s, 's')
+		}
 		io.WriteString(s, ":")
 		f.Format(s, 'd')
+		if s.Flag('+') {
+			_, _ = io.WriteString(s, ")")
+		}
 	}
 }
 
