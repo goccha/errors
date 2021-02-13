@@ -98,7 +98,7 @@ func TestFuncname(t *testing.T) {
 	}{
 		{"", ""},
 		{"runtime.main", "main"},
-		{"github.com/pkg/errors.funcname", "funcname"},
+		{"github.com/goccha/errors.funcname", "funcname"},
 		{"funcname", "funcname"},
 		{"io.copyBuffer", "copyBuffer"},
 		{"main.(*R).Write", "(*R).Write"},
